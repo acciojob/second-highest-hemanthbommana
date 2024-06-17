@@ -11,36 +11,27 @@
 		function secondHighest(arr) {
 			//Write your code here\
 			if(arr.length <= 1){
-				return "-Infinity" ;
+				return -Infinity ;
 			}
-			let temp = false;
-			for(let i=0;i<arr.length;i++){
-				if(arr[0] == arr[i]){
-					temp = true ;
-				}
-				else{
-					temp = false ;
-					break;
-				}
-			}
-			if(temp){
-				return "-Infinity" ;
+			let allEqual = arr.every(val => val === arr[0]);
+			if(allEqual){
+				return -Infinity ;
 			}
 			let max = Number.MIN_SAFE_INTEGER ;
 			let sechighest = Number.MIN_SAFE_INTEGER ;
 			for(let i=0;i<arr.length;i++){
-				if(arr[i] > max ){
-					max = arr[i];
-				}
-				if(max > arr[i] && arr[i] > sechighest){
-					sechighest = arr[i];
-				}
+				if (arr[i] > max) {
+                    secHighest = max;
+                    max = arr[i];
+                } else if (arr[i] > secHighest && arr[i] !== max) {
+                    secHighest = arr[i];
+                }
 			}
 			return sechighest ;
 		}
 
 		function Main() {
-			var n = prompt("Enter the number of elements");
+		//	var n = prompt("Enter the number of elements");
 			var arr = [];
 			for (var i = 0; i < n; i++) {
 				arr[i] = prompt("Enter element " + (i+1));
